@@ -9,100 +9,177 @@
             --bg-color: #0d1117;
             --text-color: #c9d1d9;
             --accent-color: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.4);
             --card-bg: #161b22;
             --border-color: #30363d;
         }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            /* Top gradient accent line for flare */
+            border-top: 6px solid;
+            border-image: linear-gradient(to right, #58a6ff, #1f6feb) 1;
         }
+        
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
-        header {
-            margin-bottom: 40px;
+        
+        /* Profile Header Flexbox */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+            padding-bottom: 30px;
         }
-        h1 {
+        
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .profile-img:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        .header-text h1 {
             color: #ffffff;
-            margin: 0 0 10px 0;
-            font-size: 2.5em;
+            margin: 0 0 5px 0;
+            font-size: 2.8em;
+            letter-spacing: -0.5px;
         }
+        
         .tagline {
             font-size: 1.2em;
             color: #8b949e;
-            margin: 0 0 20px 0;
+            margin: 0 0 15px 0;
         }
+        
         .social-links a {
             color: var(--accent-color);
             text-decoration: none;
             margin-right: 15px;
             font-weight: 600;
+            transition: color 0.2s;
         }
+        
         .social-links a:hover {
+            color: #79c0ff;
             text-decoration: underline;
         }
+        
         section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
+        
         h2 {
             color: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            display: inline-block;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
         }
+        
+        /* Grid for projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        /* Project Card with Hover Animations */
         .project-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-color);
+        }
+        
         .project-card h3 {
             margin-top: 0;
-            color: var(--accent-color);
+            font-size: 1.4em;
         }
+        
         .project-card h3 a {
-            color: inherit;
+            color: var(--accent-color);
             text-decoration: none;
         }
+        
         .project-card h3 a:hover {
             text-decoration: underline;
         }
+        
+        .project-card p {
+            flex-grow: 1; /* Pushes tech-stack to the bottom */
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+        
         .tech-stack {
-            margin-top: 15px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
+        
         .tech-tag {
             background-color: rgba(88, 166, 255, 0.1);
             color: var(--accent-color);
-            padding: 4px 10px;
-            border-radius: 12px;
+            padding: 5px 12px;
+            border-radius: 15px;
             font-size: 0.85em;
             font-weight: 600;
+            border: 1px solid rgba(88, 166, 255, 0.2);
         }
-        p {
-            margin-bottom: 15px;
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .header-text h1 {
+                font-size: 2.2em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Muhammad Guntur</h1>
-            <p class="tagline">Android Kernel & Systems Developer</p>
-            <div class="social-links">
-                <a href="https://github.com/re-noroi" target="_blank">GitHub</a>
-                <a href="mailto:mochtur@gmail.com">Email Me</a>
+        <!-- New Flexbox Header with Profile Picture -->
+        <header class="profile-header">
+            <img src="https://github.com/re-noroi.png" alt="Muhammad Guntur" class="profile-img">
+            <div class="header-text">
+                <h1>Muhammad Guntur</h1>
+                <p class="tagline">Android Kernel & Systems Developer</p>
+                <div class="social-links">
+                    <a href="https://github.com/re-noroi" target="_blank">GitHub</a>
+                    <a href="mailto:mochtur@gmail.com">Email Me</a>
+                </div>
             </div>
         </header>
 
@@ -113,24 +190,33 @@
         </section>
 
         <section id="projects">
-            <h2>Featured Work</h2>
+            <h2>Featured Projects</h2>
             
-            <div class="project-card">
-                <h3><a href="https://github.com/re-noroi/kernel_sm8250" target="_blank">FakeDreamer Custom Kernel (SM8250)</a></h3>
-                <p>A highly optimized, custom Linux kernel maintained for Qualcomm Snapdragon 865 (SM8250) devices, specifically targeting the POCO F3 (alioth), Apollo, and Munch.</p>
-                <ul>
-                    <li><strong>Scheduler Optimization:</strong> Integrated EEVDF scheduler backports and custom DVFS headroom sysctl tunables for improved CPU power management.</li>
-                    <li><strong>System Integration:</strong> Built-in KernelSU support for seamless root-level access and management.</li>
-                    <li><strong>Memory & Performance:</strong> Configured advanced zRAM memory compression and BPF implementations for enhanced multitasking.</li>
-                    <li><strong>CI/CD & Deployment:</strong> Automated the entire compilation and variant-branching process using GitHub Actions and AnyKernel3 flashing scripts.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tech-tag">C/C++</span>
-                    <span class="tech-tag">Linux Kernel</span>
-                    <span class="tech-tag">Git</span>
-                    <span class="tech-tag">GitHub Actions</span>
-                    <span class="tech-tag">Bash/Shell</span>
+            <!-- Grid Layout for Projects -->
+            <div class="projects-grid">
+                
+                <!-- Project 1: FakeDreamer -->
+                <div class="project-card">
+                    <h3><a href="https://github.com/re-noroi/kernel_sm8250" target="_blank">FakeDreamer Kernel</a></h3>
+                    <p>A highly optimized, custom Linux kernel maintained for Qualcomm Snapdragon 865 (SM8250) devices, targeting the POCO F3 (alioth), Apollo, and Munch. Features EEVDF scheduler backports, KernelSU integration, advanced zRAM config, and custom DVFS headroom sysctl tunables.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Linux Kernel</span>
+                        <span class="tech-tag">KernelSU</span>
+                    </div>
                 </div>
+
+                <!-- Project 2: Git-KBuild -->
+                <div class="project-card">
+                    <h3><a href="https://github.com/re-noroi/Git-KBuild" target="_blank">Git-KBuild</a></h3>
+                    <p>An automated CI/CD build pipeline utilizing GitHub Actions for compiling custom Android kernels. It utilizes customizable repository branches to streamline the compilation process, manage dependencies, and output flashable AnyKernel3 zips directly from the cloud.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Bash/Shell</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
