@@ -22,7 +22,7 @@
             margin: 0;
             padding: 0;
             /* Top gradient accent line for flare */
-            border-top: 6px solid;
+            border-top: 4px solid;
             border-image: linear-gradient(to right, #58a6ff, #1f6feb) 1;
         }
         
@@ -69,17 +69,27 @@
             margin: 0 0 15px 0;
         }
         
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
         .social-links a {
             color: var(--accent-color);
-            text-decoration: none;
-            margin-right: 15px;
-            font-weight: 600;
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
         }
         
         .social-links a:hover {
             color: #79c0ff;
-            text-decoration: underline;
+            transform: scale(1.15); /* Makes the icon pop up slightly when hovered */
+        }
+        
+        .social-links a svg {
+            fill: currentColor;
+            width: 26px; /* Slightly larger since there is no text */
+            height: 26px;
         }
         
         section {
@@ -189,6 +199,23 @@
         .project-card:hover .repo-stats svg {
             fill: var(--accent-color);
         }
+
+        .community-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px; /* Spaces it above the tech stack */
+            transition: color 0.2s;
+        }
+        
+        .community-link:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -200,8 +227,33 @@
                 <h1>Muhammad Guntur</h1>
                 <p class="tagline">Android Kernel & Systems Developer</p>
                 <div class="social-links">
-                    <a href="https://github.com/re-noroi" target="_blank">GitHub</a>
-                    <a href="mailto:mochtur@gmail.com">Email Me</a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/re-noroi" target="_blank" aria-label="GitHub">
+                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1">
+                            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                        </svg>
+                    </a>
+                    
+                    <!-- Email -->
+                    <a href="mailto:mochtur@gmail.com" aria-label="Email Me">
+                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1">
+                            <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.249.25.249h12.5a.25.25 0 0 0 .25-.25V5.871L8.243 9.75a.75.75 0 0 1-.486 0L1.5 5.87v6.381ZM14.5 4.07v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"></path>
+                        </svg>
+                    </a>
+                    
+                    <!-- Telegram -->
+                    <a href="https://t.me/KaminariKo" target="_blank" aria-label="Telegram">
+                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1">
+                            <path d="M15.492 1.252a.5.5 0 0 0-.612-.175L.376 7.037a.5.5 0 0 0-.016.924l4.237 1.936 1.436 4.417a.5.5 0 0 0 .86.155l2.252-2.316 4.148 3.125a.5.5 0 0 0 .805-.295l2.5-13a.5.5 0 0 0-.112-.431zM5.385 8.783l8.03-5.245-6.525 6.425-.017.017-.89 2.742-.6-2.939z"></path>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/renoroi" target="_blank" aria-label="LinkedIn">
+                        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1">
+                            <path d="M14.82 0H1.18A1.16 1.16 0 0 0 0 1.15v13.7A1.16 1.16 0 0 0 1.18 16h13.64A1.16 1.16 0 0 0 16 14.85V1.15A1.16 1.16 0 0 0 14.82 0ZM4.74 13.68H2.37V6h2.37v7.68ZM3.55 4.96a1.38 1.38 0 1 1 1.38-1.38 1.38 1.38 0 0 1-1.38 1.38Zm10.13 8.72h-2.37V9.92c0-.9 0-2.05-1.25-2.05s-1.44 1-1.44 2v3.8H6.25V6h2.27v1h.03a2.49 2.49 0 0 1 2.24-1.23c2.4 0 2.84 1.58 2.84 3.63v4.28Z"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </header>
@@ -220,7 +272,10 @@
                 
                 <!-- Project 1: FakeDreamer -->
                 <div class="project-card">
-                    <h3><a href="https://github.com/re-noroi/kernel_sm8250" target="_blank">FakeDreamer Kernel</a></h3>
+                    <h3>
+                        <a href="https://github.com/re-noroi/kernel_sm8250" target="_blank">FakeDreamer Kernel</a> 
+                        <span style="font-size: 0.75em; color: #8b949e; font-weight: normal; margin-left: 8px;">(2025 - Present)</span>
+                    </h3>
                     <div class="repo-stats">
                         <span>
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
@@ -236,6 +291,12 @@
                         </span>
                     </div>
                     <p>A highly optimized, custom Linux kernel maintained for Qualcomm Snapdragon 865 (SM8250) devices, targeting the POCO F3 (alioth), Apollo, and Munch. Features EEVDF scheduler backports, KernelSU integration, advanced zRAM config, and custom DVFS headroom sysctl tunables.</p>
+                    <a href="https://t.me/renoroihub" target="_blank" class="community-link">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0 1 14.25 14H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 15.543V14H1.75A1.75 1.75 0 0 1 0 12.25v-9.5C0 1.784.784 1 1.75 1ZM1.5 2.75v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.75.75 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Z"></path>
+                        </svg>
+                        Community Support Group
+                    </a>
                     <div class="tech-stack">
                         <span class="tech-tag">C</span>
                         <span class="tech-tag">Linux Kernel</span>
@@ -245,7 +306,10 @@
 
                 <!-- Project 2: Git-KBuild -->
                 <div class="project-card">
-                    <h3><a href="https://github.com/re-noroi/Git-KBuild" target="_blank">Git-KBuild</a></h3>
+                    <h3>
+                        <a href="https://github.com/re-noroi/Git-KBuild" target="_blank">Git-KBuild</a> 
+                        <span style="font-size: 0.75em; color: #8b949e; font-weight: normal; margin-left: 8px;">(2025 - Present)</span>
+                    </h3>
                     <div class="repo-stats">
                         <span>
                             <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16">
